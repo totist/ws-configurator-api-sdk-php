@@ -1,6 +1,6 @@
 <?php
 /**
- * TemplatesData
+ * VehicleData
  *
  * PHP version 5
  *
@@ -32,50 +32,50 @@ use \ArrayAccess;
 use \WheelSizeApiClient\Configurator\ObjectSerializer;
 
 /**
- * TemplatesData Class Doc Comment
+ * VehicleData Class Doc Comment
  *
  * @category Class
  * @package  WheelSizeApiClient\Configurator
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class TemplatesData implements ModelInterface, ArrayAccess
+class VehicleData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $swaggerModelName = 'TemplatesData';
+     * The original name of the model.
+     *
+     * @var string
+     */
+    protected static $swaggerModelName = 'VehicleData';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'make' => '\WheelSizeApiClient\Configurator\Model\Make',
-        'model' => '\WheelSizeApiClient\Configurator\Model\Model',
-        'generation' => '\WheelSizeApiClient\Configurator\Model\Generation',
-        'body' => '\WheelSizeApiClient\Configurator\Model\GenBody',
-        'vehicle_data' => '\WheelSizeApiClient\Configurator\Model\VehicleData'
+        'year' => 'int',
+        'trim' => 'string',
+        'body' => 'string',
+        'doors' => 'string',
+        'cab' => 'string',
+        'wheels' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
-        'id' => null,
-        'make' => null,
-        'model' => null,
-        'generation' => null,
+        'year' => null,
+        'trim' => null,
         'body' => null,
-        'vehicle_data' => null
+        'doors' => null,
+        'cab' => null,
+        'wheels' => null
     ];
 
     /**
@@ -105,12 +105,12 @@ class TemplatesData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'make' => 'make',
-        'model' => 'model',
-        'generation' => 'generation',
+        'year' => 'year',
+        'trim' => 'trim',
         'body' => 'body',
-        'vehicle_data' => 'vehicle_data'
+        'doors' => 'doors',
+        'cab' => 'cab',
+        'wheels' => 'wheels'
     ];
 
     /**
@@ -119,12 +119,12 @@ class TemplatesData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'make' => 'setMake',
-        'model' => 'setModel',
-        'generation' => 'setGeneration',
+        'year' => 'setYear',
+        'trim' => 'setTrim',
         'body' => 'setBody',
-        'vehicle_data' => 'setVehicleData'
+        'doors' => 'setDoors',
+        'cab' => 'setCab',
+        'wheels' => 'setWheels'
     ];
 
     /**
@@ -133,12 +133,12 @@ class TemplatesData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'make' => 'getMake',
-        'model' => 'getModel',
-        'generation' => 'getGeneration',
+        'year' => 'getYear',
+        'trim' => 'getTrim',
         'body' => 'getBody',
-        'vehicle_data' => 'getVehicleData'
+        'doors' => 'getDoors',
+        'cab' => 'getCab',
+        'wheels' => 'getWheels'
     ];
 
     /**
@@ -199,12 +199,12 @@ class TemplatesData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['make'] = isset($data['make']) ? $data['make'] : null;
-        $this->container['model'] = isset($data['model']) ? $data['model'] : null;
-        $this->container['generation'] = isset($data['generation']) ? $data['generation'] : null;
+        $this->container['year'] = isset($data['year']) ? $data['year'] : null;
+        $this->container['trim'] = isset($data['trim']) ? $data['trim'] : null;
         $this->container['body'] = isset($data['body']) ? $data['body'] : null;
-        $this->container['vehicle_data'] = isset($data['vehicle_data']) ? $data['vehicle_data'] : null;
+        $this->container['doors'] = isset($data['doors']) ? $data['doors'] : null;
+        $this->container['cab'] = isset($data['cab']) ? $data['cab'] : null;
+        $this->container['wheels'] = isset($data['wheels']) ? $data['wheels'] : null;
     }
 
     /**
@@ -216,20 +216,23 @@ class TemplatesData implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['year'] === null) {
+            $invalidProperties[] = "'year' can't be null";
         }
-        if ($this->container['make'] === null) {
-            $invalidProperties[] = "'make' can't be null";
-        }
-        if ($this->container['model'] === null) {
-            $invalidProperties[] = "'model' can't be null";
-        }
-        if ($this->container['generation'] === null) {
-            $invalidProperties[] = "'generation' can't be null";
+        if ($this->container['trim'] === null) {
+            $invalidProperties[] = "'trim' can't be null";
         }
         if ($this->container['body'] === null) {
             $invalidProperties[] = "'body' can't be null";
+        }
+        if ($this->container['doors'] === null) {
+            $invalidProperties[] = "'doors' can't be null";
+        }
+        if ($this->container['cab'] === null) {
+            $invalidProperties[] = "'cab' can't be null";
+        }
+        if ($this->container['wheels'] === null) {
+            $invalidProperties[] = "'wheels' can't be null";
         }
         return $invalidProperties;
     }
@@ -247,97 +250,49 @@ class TemplatesData implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets year
      *
      * @return int
      */
-    public function getId()
+    public function getYear()
     {
-        return $this->container['id'];
+        return $this->container['year'];
     }
 
     /**
-     * Sets id
+     * Sets year
      *
-     * @param int $id id
+     * @param int $year
      *
      * @return $this
      */
-    public function setId($id)
+    public function setYear($year)
     {
-        $this->container['id'] = $id;
+        $this->container['year'] = $year;
 
         return $this;
     }
 
     /**
-     * Gets make
+     * Gets trim
      *
-     * @return \WheelSizeApiClient\Configurator\Model\Make
+     * @return string
      */
-    public function getMake()
+    public function getTrim()
     {
-        return $this->container['make'];
+        return $this->container['trim'];
     }
 
     /**
-     * Sets make
+     * Sets trim
      *
-     * @param \WheelSizeApiClient\Configurator\Model\Make $make make
+     * @param string $trim
      *
      * @return $this
      */
-    public function setMake($make)
+    public function setTrim($trim)
     {
-        $this->container['make'] = $make;
-
-        return $this;
-    }
-
-    /**
-     * Gets model
-     *
-     * @return \WheelSizeApiClient\Configurator\Model\Model
-     */
-    public function getModel()
-    {
-        return $this->container['model'];
-    }
-
-    /**
-     * Sets model
-     *
-     * @param \WheelSizeApiClient\Configurator\Model\Model $model model
-     *
-     * @return $this
-     */
-    public function setModel($model)
-    {
-        $this->container['model'] = $model;
-
-        return $this;
-    }
-
-    /**
-     * Gets generation
-     *
-     * @return \WheelSizeApiClient\Configurator\Model\Generation
-     */
-    public function getGeneration()
-    {
-        return $this->container['generation'];
-    }
-
-    /**
-     * Sets generation
-     *
-     * @param \WheelSizeApiClient\Configurator\Model\Generation $generation generation
-     *
-     * @return $this
-     */
-    public function setGeneration($generation)
-    {
-        $this->container['generation'] = $generation;
+        $this->container['trim'] = $trim;
 
         return $this;
     }
@@ -345,7 +300,7 @@ class TemplatesData implements ModelInterface, ArrayAccess
     /**
      * Gets body
      *
-     * @return \WheelSizeApiClient\Configurator\Model\GenBody
+     * @return string
      */
     public function getBody()
     {
@@ -355,7 +310,7 @@ class TemplatesData implements ModelInterface, ArrayAccess
     /**
      * Sets body
      *
-     * @param \WheelSizeApiClient\Configurator\Model\GenBody $body body
+     * @param string $body
      *
      * @return $this
      */
@@ -367,25 +322,73 @@ class TemplatesData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets vehicle_data
+     * Gets doors
      *
      * @return string
      */
-    public function getVehicleData()
+    public function getDoors()
     {
-        return $this->container['vehicle_data'];
+        return $this->container['doors'];
     }
 
     /**
-     * Sets vehicle_data
+     * Sets doors
      *
-     * @param string $vehicle_data vehicle_data
+     * @param string $doors
      *
      * @return $this
      */
-    public function setVehicleData($vehicle_data)
+    public function setDoors($doors)
     {
-        $this->container['vehicle_data'] = $vehicle_data;
+        $this->container['doors'] = $doors;
+
+        return $this;
+    }
+
+    /**
+     * Gets cab
+     *
+     * @return string
+     */
+    public function getCab()
+    {
+        return $this->container['cab'];
+    }
+
+    /**
+     * Sets cab
+     *
+     * @param string $cab
+     *
+     * @return $this
+     */
+    public function setCab($cab)
+    {
+        $this->container['cab'] = $cab;
+
+        return $this;
+    }
+
+    /**
+     * Gets wheels
+     *
+     * @return string
+     */
+    public function getWheels()
+    {
+        return $this->container['wheels'];
+    }
+
+    /**
+     * Sets wheels
+     *
+     * @param string $wheels
+     *
+     * @return $this
+     */
+    public function setWheels($wheels)
+    {
+        $this->container['wheels'] = $wheels;
 
         return $this;
     }
