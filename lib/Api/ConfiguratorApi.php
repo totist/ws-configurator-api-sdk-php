@@ -634,11 +634,12 @@ class ConfiguratorApi
      *
      * @throws \WheelSizeApiClient\Configurator\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \WheelSizeApiClient\Configurator\Model\RimFitOutput
      */
     public function configuratorTemplateRimFit($template, $url = null, $file = null, $color = null, $brakes = null, $rba_level = null)
     {
-        $this->configuratorTemplateRimFitWithHttpInfo($template, $url, $file, $color, $brakes, $rba_level);
+        list($response) = $this->configuratorTemplateRimFitWithHttpInfo($template, $url, $file, $color, $brakes, $rba_level);
+        return $response;
     }
 
     /**
@@ -659,7 +660,7 @@ class ConfiguratorApi
      */
     public function configuratorTemplateRimFitWithHttpInfo($template, $url = null, $file = null, $color = null, $brakes = null, $rba_level = null)
     {
-        $returnType = '';
+        $returnType = '\WheelSizeApiClient\Configurator\Model\RimFitOutput';
         $request = $this->configuratorTemplateRimFitRequest($template, $url, $file, $color, $brakes, $rba_level);
 
         try {
@@ -690,7 +691,21 @@ class ConfiguratorApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
